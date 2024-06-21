@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container" id="elzero-app">
+      <button @click="message= !message">
+        {{message ? 'Hide message':'Show message'}}
+      </button>
+      <Transition name="bounce">
+        <div class="themessage" v-if="message">This is an alert!</div>
+      </Transition>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+      var app = new Vue({
+        el: "#elzero-app",
+        data: {
+          message: false,
+        },
+      });
+    </script>
+  </body>
+</html>
+<style>
+  body {
+    font-family: "open Sans";
+    font-size: 19px;
+  }
+  .container {
+    margin: 20px auto;
+    width: 200px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .container button {
+    padding: 15px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .container .themessage {
+    padding: 20px;
+    margin: auto;
+    background-color: #eee;
+    border-radius: 6px;
+  }
+  .bounce-enter-active {
+    animation: bounce-in 0.5s;
+  }
+  .bounce-leave-active {
+    animation: bounce-in 0.5s reverse;
+  }
+  @keyframes bounce-in {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1.25);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+</style>
